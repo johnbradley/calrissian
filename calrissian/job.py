@@ -149,6 +149,7 @@ class KubernetesPodBuilder(object):
             pod_command.extend(['2>', self.stderr])
         if self.stdin:
             pod_command.extend(['<', self.stdin])
+        pod_command.extend(['&&', 'sleep', '10']) # checking to see if multiple pods
         # pod_command is a list of strings. Needs to be turned into a single string
         # and passed as an argument to sh -c. Otherwise we cannot redirect STDIN/OUT/ERR inside a kubernetes container
         # Join everything into a single string and then return a single args list
