@@ -59,7 +59,7 @@ class KubernetesClient(object):
                 continue
             elif self.state_is_terminated(status.state):
                 self._handle_terminated_state(status.state)
-                self.core_api_instance.delete_namespaced_pod(self.pod.metadata.name, self.namespace, client.V1DeleteOptions())
+                #self.core_api_instance.delete_namespaced_pod(self.pod.metadata.name, self.namespace, client.V1DeleteOptions())
                 self._clear_pod()
                 # stop watching for events, our pod is done. Causes wait loop to exit
                 w.stop()
